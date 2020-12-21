@@ -1,0 +1,54 @@
+<div>
+  <h2 id="page-heading">
+      <span>Colleges</span>
+
+      <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-college" [routerLink]="['/college/new']">
+
+          <span>
+          Create a new College
+          </span>
+      </button>
+  </h2>
+
+
+  <div class="alert alert-warning" id="no-result" *ngIf="colleges?.length === 0">
+      <span>No colleges found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="colleges && colleges.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+          <thead>
+              <tr>
+                  <th scope="col" ><span>ID</span></th>
+                  <th scope="col" ><span>Name</span></th>
+                  <th scope="col" ><span>Code</span></th>
+                  <th scope="col"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let college of colleges ;trackBy: trackId">
+                  <td><a [routerLink]="['/college', college.id, 'view']">{{ college.id }}</a></td>
+                  <td>{{ college.name }}</td>
+                  <td>{{ college.code }}</td>
+                  <td class="text-right">
+                      <div class="btn-group">
+                          <button type="submit"
+                                  [routerLink]="['/college', college.id, 'view']"
+                                  class="btn btn-info btn-sm">
+                              <span class="d-none d-md-inline">View</span>
+                          </button>
+
+                          <button type="submit"
+                                  [routerLink]="['/college', college.id, 'edit']"
+                                  class="btn btn-primary btn-sm">
+                              <span class="d-none d-md-inline">Edit</span>
+                          </button>
+
+
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
