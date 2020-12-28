@@ -1,0 +1,25 @@
+
+table tr th,
+table tr th a {
+  font-family: nb-theme(smart-table-header-font-family);
+  font-size: nb-theme(smart-table-header-font-size);
+  font-weight: nb-theme(smart-table-header-font-weight);
+  line-height: nb-theme(smart-table-header-line-height);
+  color: nb-theme(smart-table-header-fg);
+}
+
+table tr td {
+  font-family: nb-theme(smart-table-font-family);
+  font-size: nb-theme(smart-table-font-size);
+  font-weight: nb-theme(smart-table-font-weight);
+  line-height: nb-theme(smart-table-line-height);
+  color: nb-theme(smart-table-fg);
+}
+
+table tr th,
+table tr td {
+  position: relative;
+  padding: nb-theme(smart-table-padding);
+  border: 1px solid nb-theme(smart-table-separator);
+  vertical-align: middle;
+}

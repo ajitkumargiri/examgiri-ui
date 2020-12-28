@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        <div class="row ml-1">
+          <div >
+             Colleges
+
+          </div>
+          <div class="ml-auto mr-3">
+            <div class="buttons-row">
+
+              <button nbButton  status="info"  id="jh-create-entity mr-2" data-cy="entityCreateButton"
+                [routerLink]="['/college/upload']">
+                <nb-icon icon="file-text-outline"></nb-icon>
+                <span>
+                  Import Csv
+                </span>
+              </button>
+              <button nbButton  status="warning" (click)="loadAll()" [disabled]="isLoading">
+                <nb-icon icon="refresh-outline"></nb-icon>
+                <span>Refresh List</span>
+
+              </button>
+              <button nbButton  status="success"   id="jh-create-entity mr-2" data-cy="entityCreateButton"
+                [routerLink]="['/college/new']">
+                <nb-icon icon="plus-outline"></nb-icon>
+                <span>
+                  Create a new College
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </nb-card-header>
+
+      <nb-card-body>
+        <div class="alert alert-warning" id="no-result" *ngIf="colleges?.length === 0">
+          <span>No colleges found</span>
+        </div>
+
+        <div class="table-responsive" id="entities" *ngIf="colleges && colleges.length > 0">
+          <table class="table table-striped table-bordered" aria-describedby="page-heading">
+            <thead>
+              <tr>
+                <th scope="col"><span>name</span></th>
+                <th scope="col"><span>code</span></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let college of colleges; trackBy: trackId" data-cy="entityTable">
+                <td class="nb-column-name">{{ college.name }}</td>
+                <td class="nb-column-name">{{ college.code }}</td>
+                <td class="text-right">
+                  <div class="buttons-row">
+                    <button type="submit" nbButton status="primary" size="tiny" [routerLink]="['/college', college.id, 'view']" class="btn btn-info btn-sm"
+                      data-cy="entityDetailsButton">
+                      <nb-icon icon="eye-outline"></nb-icon>
+                      <span class="d-none d-md-inline">View</span>
+                    </button>
+
+                    <button type="submit" nbButton size="tiny" status="success" [routerLink]="['/college', college.id, 'edit']" class="btn btn-primary btn-sm"
+                      data-cy="entityEditButton">
+                      <nb-icon icon="edit-outline"></nb-icon>
+                      <span class="d-none d-md-inline">Edit</span>
+                    </button>
+
+                    <button type="submit" nbButton size="tiny" status="danger" (click)="delete(college)" class="btn btn-danger btn-sm"
+                      data-cy="entityDeleteButton">
+                      <nb-icon icon="trash-2-outline"></nb-icon>
+                      <span class="d-none d-md-inline">Delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
